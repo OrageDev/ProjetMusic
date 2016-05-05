@@ -57,8 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,14 +82,15 @@
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.GrayText;
-            this.listBox1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
+            this.listBox1.AllowDrop = true;
+            this.listBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.listBox1.Font = new System.Drawing.Font("Papyrus", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.Color.Lime;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 23;
+            this.listBox1.ItemHeight = 30;
             this.listBox1.Location = new System.Drawing.Point(0, 23);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(277, 280);
+            this.listBox1.Size = new System.Drawing.Size(277, 274);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -139,9 +138,9 @@
             this.labelEtat.ForeColor = System.Drawing.Color.Black;
             this.labelEtat.Location = new System.Drawing.Point(335, 35);
             this.labelEtat.Name = "labelEtat";
-            this.labelEtat.Size = new System.Drawing.Size(41, 22);
+            this.labelEtat.Size = new System.Drawing.Size(0, 22);
             this.labelEtat.TabIndex = 12;
-            this.labelEtat.Text = "Null";
+            this.labelEtat.Click += new System.EventHandler(this.labelEtat_Click);
             // 
             // menuStrip1
             // 
@@ -167,14 +166,14 @@
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(103, 22);
+            this.menuFileOpen.Size = new System.Drawing.Size(152, 22);
             this.menuFileOpen.Text = "Open";
             this.menuFileOpen.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // menuFileExit
             // 
             this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.Size = new System.Drawing.Size(103, 22);
+            this.menuFileExit.Size = new System.Drawing.Size(152, 22);
             this.menuFileExit.Text = "Exit";
             this.menuFileExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -228,7 +227,7 @@
             this.panel1.Controls.Add(this.labelType);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(283, 60);
+            this.panel1.Location = new System.Drawing.Point(287, 81);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(183, 116);
             this.panel1.TabIndex = 17;
@@ -240,9 +239,8 @@
             this.labelTime.ForeColor = System.Drawing.Color.Black;
             this.labelTime.Location = new System.Drawing.Point(73, 76);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(41, 22);
+            this.labelTime.Size = new System.Drawing.Size(0, 22);
             this.labelTime.TabIndex = 20;
-            this.labelTime.Text = "Null";
             // 
             // label7
             // 
@@ -261,9 +259,8 @@
             this.labelLength.ForeColor = System.Drawing.Color.Black;
             this.labelLength.Location = new System.Drawing.Point(73, 43);
             this.labelLength.Name = "labelLength";
-            this.labelLength.Size = new System.Drawing.Size(41, 22);
+            this.labelLength.Size = new System.Drawing.Size(0, 22);
             this.labelLength.TabIndex = 18;
-            this.labelLength.Text = "Null";
             // 
             // labelType
             // 
@@ -272,9 +269,8 @@
             this.labelType.ForeColor = System.Drawing.Color.Black;
             this.labelType.Location = new System.Drawing.Point(70, 9);
             this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(41, 22);
+            this.labelType.Size = new System.Drawing.Size(0, 22);
             this.labelType.TabIndex = 17;
-            this.labelType.Text = "Null";
             // 
             // trackBar2
             // 
@@ -341,34 +337,12 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(277, 179);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 33);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label6.Location = new System.Drawing.Point(369, 219);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 29);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "label6";
-            // 
             // FormMusicPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(879, 348);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_next);
@@ -427,8 +401,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
     }
 #else
     /// <summary>

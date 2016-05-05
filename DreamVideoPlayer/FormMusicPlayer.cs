@@ -192,8 +192,6 @@ namespace DreamMusicPlayer
             }
         }
 
-        
-
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             if (_MouseIsPressedInTrackBar2 == true && _MouseIsEnterTheTrackBar2 == true)
@@ -215,7 +213,6 @@ namespace DreamMusicPlayer
             _MouseIsEnterTheTrackBar2 = false;
         }
         
-
         private void fileOpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -276,17 +273,10 @@ namespace DreamMusicPlayer
                     btn_stop_Click(sender, e);
                     btn_Play_Click(sender, e);
                 }
-                else
-                {
-
-                }
-
-
+                else {}
             }
-            else
-            {
-
-            }
+            else {}
+            
             monPlayer.setTime(tmp, labelTime, this);
 
             t.TimeTick(label1,tmp, trackBar2, m, timer1);
@@ -325,7 +315,10 @@ namespace DreamMusicPlayer
             return Convert.ToInt32(_tdd);
         }
 
-       
+        private void labelEtat_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
