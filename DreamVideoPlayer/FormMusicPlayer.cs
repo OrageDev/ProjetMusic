@@ -295,11 +295,11 @@ namespace DreamMusicPlayer
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            richTextBox1.AppendText("\n");
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();
+            //richTextBox1.AppendText("\n");
+            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            //richTextBox1.ScrollToCaret();
         }
-        
+
         private void trackBar2_ValueChanged(object sender, EventArgs e)
         {
             //if(_MouseIsPressedInTrackBar2 == true)
@@ -316,6 +316,16 @@ namespace DreamMusicPlayer
         }
 
         private void labelEtat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void glControl1_Load(object sender, EventArgs e)
         {
 
         }

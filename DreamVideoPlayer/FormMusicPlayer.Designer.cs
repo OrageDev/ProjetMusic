@@ -56,7 +56,7 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.glControl1 = new OpenTK.GLControl();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -166,14 +166,14 @@
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(152, 22);
+            this.menuFileOpen.Size = new System.Drawing.Size(103, 22);
             this.menuFileOpen.Text = "Open";
             this.menuFileOpen.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // menuFileExit
             // 
             this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.Size = new System.Drawing.Size(152, 22);
+            this.menuFileExit.Size = new System.Drawing.Size(103, 22);
             this.menuFileExit.Text = "Exit";
             this.menuFileExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -189,7 +189,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.label2.Location = new System.Drawing.Point(283, 35);
+            this.label2.Location = new System.Drawing.Point(287, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 22);
             this.label2.TabIndex = 14;
@@ -229,8 +229,9 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(287, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(183, 116);
+            this.panel1.Size = new System.Drawing.Size(200, 142);
             this.panel1.TabIndex = 17;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // labelTime
             // 
@@ -328,14 +329,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // richTextBox1
+            // glControl1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(525, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(354, 251);
-            this.richTextBox1.TabIndex = 22;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.glControl1.BackColor = System.Drawing.Color.Black;
+            this.glControl1.Location = new System.Drawing.Point(283, 23);
+            this.glControl1.Name = "glControl1";
+            this.glControl1.Size = new System.Drawing.Size(584, 225);
+            this.glControl1.TabIndex = 22;
+            this.glControl1.VSync = false;
+            this.glControl1.Load += new System.EventHandler(this.glControl1_Load);
             // 
             // FormMusicPlayer
             // 
@@ -343,7 +345,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(879, 348);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_previous);
@@ -357,6 +358,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_play);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.glControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -400,7 +402,7 @@
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private OpenTK.GLControl glControl1;
     }
 #else
     /// <summary>
