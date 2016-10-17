@@ -83,6 +83,7 @@
     <Compile Include="FormMusicPlayer.Designer.cs">
       <DependentUpon>FormMusicPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Music.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,21 +39,21 @@ namespace DreamMusicPlayer
         /// Permet de lire les fichiers MP3 et MP4.
         /// </summary>
         /// 
-        /// <param name="url"></param>
-        public void PlayMusic(string url, System.Windows.Forms.TrackBar trackBar1)
+        /// <param name="music"></param>
+        public void PlayMusic(Music music, System.Windows.Forms.TrackBar trackBar1)
         {
 
             if (this.GetStatus() == "Finished"){
                 
                 
-                monPlayermdr.URL = url;
+                monPlayermdr.URL = music.Path;
                 monPlayermdr.settings.volume = trackBar1.Value;
                 monPlayermdr.controls.play();
             }
             else
             {
                 //monPlayermdr.controls.stop();
-                monPlayermdr.URL = url;
+                monPlayermdr.URL = music.Path;
                 monPlayermdr.settings.volume = trackBar1.Value;
                 monPlayermdr.controls.play();
             } 
@@ -104,10 +104,10 @@ namespace DreamMusicPlayer
         /// Permet de définir la taille du fichier selectionné.
         /// </summary>
         /// 
-        public void setLength(System.Windows.Forms.Label labelLength, string _fileURL)
+        public void setLength(System.Windows.Forms.Label labelLength, Music music)
         {
         
-            FileInfo infoFichier = new FileInfo(_fileURL);
+            FileInfo infoFichier = new FileInfo(music.Path);
             if (6 < infoFichier.Length.ToString().Length)
             {
                 float total = (float)infoFichier.Length / 1024 / 1024;
@@ -125,7 +125,7 @@ namespace DreamMusicPlayer
         /// Méthode chooseNext.
         /// Permet de choisir la prochaine fichier dans la liste et de la jouer.
         /// </summary>
-        public void chooseNext(System.Windows.Forms.ListBox listBox1, System.Windows.Forms.TrackBar trackBar2, System.Windows.Forms.TrackBar trackBar1)
+        public void chooseNext(System.Windows.Forms.ListBox listBox1, System.Windows.Forms.TrackBar trackBar2, System.Windows.Forms.TrackBar trackBar1, List<Music> musicList)
         {
            
             if (int.Parse(listBox1.Items.Count.ToString()) > (listBox1.SelectedIndex + 1))
@@ -133,8 +133,8 @@ namespace DreamMusicPlayer
                 listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
                 trackBar2.Value = 0;
                
-                string _fileURL = FormMusicPlayer.GetFileURL();
-                PlayMusic(_fileURL, trackBar1);
+                //string _fileURL = FormMusicPlayer.GetFileURL();
+                PlayMusic(musicList[listBox1.SelectedIndex], trackBar1);
             }
         }
 
@@ -142,15 +142,15 @@ namespace DreamMusicPlayer
         /// Méthode choosePrevious.
         /// Permet de choisir le fichier précédent dans la liste et de la jouer.
         /// </summary>
-        public void choosePrevious(System.Windows.Forms.ListBox listBox1, System.Windows.Forms.TrackBar trackBar2, System.Windows.Forms.TrackBar trackBar1)
+        public void choosePrevious(System.Windows.Forms.ListBox listBox1, System.Windows.Forms.TrackBar trackBar2, System.Windows.Forms.TrackBar trackBar1, List<Music> musicList)
         {
             if (listBox1.SelectedIndex > 0)
             {
                 listBox1.SelectedIndex = listBox1.SelectedIndex - 1;
                 monPlayermdr.controls.stop();
                 trackBar2.Value = 0;
-                string _fileURL = FormMusicPlayer.GetFileURL();
-                PlayMusic(_fileURL, trackBar1);
+                //string _fileURL = FormMusicPlayer.GetFileURL();
+                PlayMusic(musicList[listBox1.SelectedIndex], trackBar1);
             }
         }
 

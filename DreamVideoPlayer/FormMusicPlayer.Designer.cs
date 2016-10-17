@@ -56,7 +56,6 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.glControl1 = new OpenTK.GLControl();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,7 +68,7 @@
             this.btn_play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_play.BackgroundImage")));
             this.btn_play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_play.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_play.Location = new System.Drawing.Point(402, 302);
+            this.btn_play.Location = new System.Drawing.Point(474, 335);
             this.btn_play.Name = "btn_play";
             this.btn_play.Size = new System.Drawing.Size(39, 39);
             this.btn_play.TabIndex = 1;
@@ -84,13 +83,13 @@
             // 
             this.listBox1.AllowDrop = true;
             this.listBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.listBox1.Font = new System.Drawing.Font("Papyrus", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.Lime;
+            this.listBox1.Font = new System.Drawing.Font("Forte", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 30;
+            this.listBox1.ItemHeight = 19;
             this.listBox1.Location = new System.Drawing.Point(0, 23);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(277, 274);
+            this.listBox1.Size = new System.Drawing.Size(874, 194);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -100,7 +99,7 @@
             this.btn_stop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_stop.BackgroundImage")));
             this.btn_stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_stop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_stop.Location = new System.Drawing.Point(447, 303);
+            this.btn_stop.Location = new System.Drawing.Point(519, 335);
             this.btn_stop.Name = "btn_stop";
             this.btn_stop.Size = new System.Drawing.Size(40, 39);
             this.btn_stop.TabIndex = 7;
@@ -109,20 +108,21 @@
             // 
             // trackBar1
             // 
+            this.trackBar1.AutoSize = false;
             this.trackBar1.BackColor = System.Drawing.Color.Gray;
             this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackBar1.LargeChange = 20;
-            this.trackBar1.Location = new System.Drawing.Point(680, 298);
+            this.trackBar1.Location = new System.Drawing.Point(744, 335);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(187, 45);
+            this.trackBar1.Size = new System.Drawing.Size(120, 45);
             this.trackBar1.TabIndex = 8;
             this.trackBar1.Value = 30;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll_1);
             // 
             // btnClearList
             // 
-            this.btnClearList.Location = new System.Drawing.Point(0, 303);
+            this.btnClearList.Location = new System.Drawing.Point(4, 344);
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(277, 39);
             this.btnClearList.TabIndex = 9;
@@ -136,7 +136,7 @@
             this.labelEtat.BackColor = System.Drawing.Color.White;
             this.labelEtat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.labelEtat.ForeColor = System.Drawing.Color.Black;
-            this.labelEtat.Location = new System.Drawing.Point(335, 35);
+            this.labelEtat.Location = new System.Drawing.Point(264, 237);
             this.labelEtat.Name = "labelEtat";
             this.labelEtat.Size = new System.Drawing.Size(0, 22);
             this.labelEtat.TabIndex = 12;
@@ -149,7 +149,7 @@
             this.menuAbout});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(879, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(874, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -189,11 +189,12 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.label2.Location = new System.Drawing.Point(287, 35);
+            this.label2.Location = new System.Drawing.Point(212, 234);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 22);
             this.label2.TabIndex = 14;
             this.label2.Text = "Etat :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -227,9 +228,9 @@
             this.panel1.Controls.Add(this.labelType);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(287, 81);
+            this.panel1.Location = new System.Drawing.Point(4, 234);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 142);
+            this.panel1.Size = new System.Drawing.Size(196, 104);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -278,10 +279,10 @@
             this.trackBar2.BackColor = System.Drawing.SystemColors.Menu;
             this.trackBar2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackBar2.LargeChange = 1;
-            this.trackBar2.Location = new System.Drawing.Point(283, 251);
+            this.trackBar2.Location = new System.Drawing.Point(206, 284);
             this.trackBar2.Maximum = 100;
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(596, 45);
+            this.trackBar2.Size = new System.Drawing.Size(658, 45);
             this.trackBar2.TabIndex = 18;
             this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
@@ -296,7 +297,7 @@
             this.btn_previous.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_previous.BackgroundImage")));
             this.btn_previous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_previous.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_previous.Location = new System.Drawing.Point(357, 302);
+            this.btn_previous.Location = new System.Drawing.Point(429, 335);
             this.btn_previous.Name = "btn_previous";
             this.btn_previous.Size = new System.Drawing.Size(39, 39);
             this.btn_previous.TabIndex = 19;
@@ -308,7 +309,7 @@
             this.btn_next.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_next.BackgroundImage")));
             this.btn_next.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_next.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_next.Location = new System.Drawing.Point(493, 303);
+            this.btn_next.Location = new System.Drawing.Point(565, 335);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(38, 40);
             this.btn_next.TabIndex = 20;
@@ -318,8 +319,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.label1.Location = new System.Drawing.Point(283, 226);
+            this.label1.Location = new System.Drawing.Point(206, 259);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 22);
             this.label1.TabIndex = 21;
@@ -329,22 +331,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // glControl1
-            // 
-            this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Location = new System.Drawing.Point(283, 23);
-            this.glControl1.Name = "glControl1";
-            this.glControl1.Size = new System.Drawing.Size(584, 225);
-            this.glControl1.TabIndex = 22;
-            this.glControl1.VSync = false;
-            this.glControl1.Load += new System.EventHandler(this.glControl1_Load);
-            // 
             // FormMusicPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(879, 348);
+            this.ClientSize = new System.Drawing.Size(874, 386);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_previous);
@@ -358,7 +350,6 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_play);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.glControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -402,7 +393,7 @@
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private OpenTK.GLControl glControl1;
+        //private OpenTK.GLControl glControl1;
     }
 #else
     /// <summary>

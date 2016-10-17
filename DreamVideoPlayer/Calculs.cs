@@ -9,7 +9,15 @@ namespace DreamMusicPlayer
 {
     class Calculs
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_MouseIsPressedInTrackBar2"></param>
+        /// <param name="_tdd"></param>
+        /// <param name="trackBar2"></param>
+        /// <param name="m"></param>
+        /// <param name="timer1"></param>
+        /// <param name="maform"></param>
         public void mouseUp(bool _MouseIsPressedInTrackBar2, double _tdd, System.Windows.Forms.TrackBar trackBar2, WMPLib.WindowsMediaPlayer m, Timer timer1, FormMusicPlayer maform )
         {
             _MouseIsPressedInTrackBar2 = false;
@@ -35,17 +43,30 @@ namespace DreamMusicPlayer
             m.controls.pause();
         }
 
-
-        public void FileKnowingPlaying(Player monPlayer, string _fileURL, System.Windows.Forms.TrackBar trackBar1, string _typeChoose, System.Windows.Forms.Label labelLength, System.Windows.Forms.Label labelTime, System.Windows.Forms.Label labelType, int tmp, string chooseLayer, Timer timer1, FormMusicPlayer maform)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="monPlayer"></param>
+        /// <param name="music"></param>
+        /// <param name="trackBar1"></param>
+        /// <param name="_typeChoose"></param>
+        /// <param name="labelLength"></param>
+        /// <param name="labelTime"></param>
+        /// <param name="labelType"></param>
+        /// <param name="tmp"></param>
+        /// <param name="chooseLayer"></param>
+        /// <param name="timer1"></param>
+        /// <param name="maform"></param>
+        public void FileKnowingPlaying(Player monPlayer, Music music, System.Windows.Forms.TrackBar trackBar1, string _typeChoose, System.Windows.Forms.Label labelLength, System.Windows.Forms.Label labelTime, System.Windows.Forms.Label labelType, int tmp, string chooseLayer, Timer timer1, FormMusicPlayer maform)
         {
-            _typeChoose = chooseLayer;
+            
             if (chooseLayer.ToLower().Contains("mp3") || chooseLayer.ToLower().Contains("mp4"))  {
 
                     
                     WMPLib.WindowsMediaPlayer m = monPlayer.GetmonPlayermdr();
                     
-                    monPlayer.PlayMusic(_fileURL, trackBar1);
-                    monPlayer.setLength(labelLength, _fileURL);
+                    monPlayer.PlayMusic(music, trackBar1);
+                    monPlayer.setLength(labelLength, music);
                     monPlayer.setTime(tmp, labelTime, maform);
                     monPlayer.setTypeLabel(labelType, _typeChoose);
                     timer1.Start();
@@ -57,6 +78,15 @@ namespace DreamMusicPlayer
                 }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="monPlayer"></param>
+        /// <param name="label1"></param>
+        /// <param name="labelEtat"></param>
+        /// <param name="trackBar2"></param>
+        /// <param name="chooseLayer"></param>
+        /// <param name="timer1"></param>
         public void FileKnowingStopping(Player monPlayer, System.Windows.Forms.Label label1, System.Windows.Forms.Label labelEtat, System.Windows.Forms.TrackBar trackBar2, string chooseLayer, Timer timer1)
         {
 
@@ -71,6 +101,11 @@ namespace DreamMusicPlayer
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_fileURL"></param>
+        /// <returns></returns>
         public string CuttingPath(string _fileURL)
         {
             string substringfileurl = _fileURL.Substring(_fileURL.LastIndexOf("\\"));

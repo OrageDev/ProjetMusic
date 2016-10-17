@@ -24,8 +24,10 @@ namespace DreamMusicPlayer
         //static public WMPLib.WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
         //static public SoundPlayer player = new SoundPlayer();
         //Thread mythread;
+        List<Music> musicList;
         Player monPlayer;
         WindowsMediaPlayer m;
+        Music currentMusic;
         Calculs c;
         string[] _fichiers, _cheminFichier;
         string _fileURL;
@@ -35,6 +37,8 @@ namespace DreamMusicPlayer
         Boolean _MouseIsEnterTheTrackBar2;
         double _tdd;
         int tmp;
+
+        int currentIndex;
         Time t;
 
 
@@ -54,7 +58,8 @@ namespace DreamMusicPlayer
             _MouseIsPressedInTrackBar2 = false;
             _MouseIsEnterTheTrackBar2 = false;
             timer1.Interval = 500;
-            
+            musicList = new List<Music>();
+            currentMusic = new Music();
         }
 
         //##########################################################################################################################################################
@@ -83,23 +88,29 @@ namespace DreamMusicPlayer
         /// <param name="e"></param>
         private void btn_Play_Click(object sender, EventArgs e) {
 
-            if (_fileURL != null) {
+            if (musicList.Count !=0)
+            {
                 t = new Time();
-                string chooseLayer = c.CuttingPath(_fileURL);
-                c.FileKnowingPlaying(monPlayer, _fileURL, trackBar1, _typeChoose, labelLength, labelTime, labelType, tmp, chooseLayer, timer1, this);
-                
+                string chooseLayer = c.CuttingPath(currentMusic.Path);
+                c.FileKnowingPlaying(monPlayer, currentMusic, trackBar1, _typeChoose, labelLength, labelTime, labelType, tmp, chooseLayer, timer1, this);
+            }else
+            {
+
             }
-            else { }
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
-            if (_fileURL != null)
+            if (musicList.Count != 0)
             {
-                string chooseLayer = c.CuttingPath(_fileURL);
-                c.FileKnowingStopping(monPlayer,label1, labelEtat,trackBar2, chooseLayer, timer1);
+                string chooseLayer = c.CuttingPath(currentMusic.Path);
+                c.FileKnowingStopping(monPlayer, label1, labelEtat, trackBar2, chooseLayer, timer1);
             }
-            else { }
+            else
+            {
+                monPlayer.StopMusic(label1,labelEtat, trackBar2);
+            }
+            
         }
         private void trackBar1_Scroll(object sender, EventArgs e) {
 
@@ -109,8 +120,8 @@ namespace DreamMusicPlayer
         private void button7_Click(object sender, EventArgs e) {
 
             listBox1.Items.Clear();
-            _fichiers = null;
-            _cheminFichier = null;
+            musicList.Clear();
+            
         }
 
         //###################################################################### Event/Handler a la classe ######################################################################
@@ -158,7 +169,8 @@ namespace DreamMusicPlayer
         /// <param name="res"></param>
         public void EndOfTrack(int res)
         {
-            monPlayer.chooseNext(listBox1, trackBar2, trackBar1);
+            
+            monPlayer.chooseNext(listBox1, trackBar2, trackBar1, musicList);
         }
 
         /// <summary>
@@ -187,8 +199,10 @@ namespace DreamMusicPlayer
             int v = int.Parse(listBox1.Items.Count.ToString());
             if (v > 0)
             {
-                _fileURL = _cheminFichier[listBox1.SelectedIndex];
-                _filestatURL = _fileURL;
+                currentIndex =  listBox1.SelectedIndex;
+                currentMusic = musicList[currentIndex];
+                //_fileURL = _cheminFichier[listBox1.SelectedIndex];
+                //_filestatURL = _fileURL;
             }
         }
 
@@ -223,7 +237,7 @@ namespace DreamMusicPlayer
             //Assembly assem = typeof(FormMusicPlayer).Assembly ;
             //AssemblyName assemName = assem.GetName();
             //Version ver = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-            MessageBox.Show("It's Music player of mp3 and wav files.\nProgram created by Clyde Biddle (Orage)\nVersion: 1.0.2.9" , "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("The player can read mp3 and mp4, no out vidéo.\nProgram created by Clyde Biddle (Orage)\nVersion: 1.0.3.0" , "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -249,13 +263,13 @@ namespace DreamMusicPlayer
         private void btn_next_Click(object sender, EventArgs e)
         {
             
-           monPlayer.chooseNext(listBox1,trackBar2, trackBar1);
+           monPlayer.chooseNext(listBox1,trackBar2, trackBar1, musicList);
         }
 
         private void btn_previous_Click(object sender, EventArgs e)
         {
             
-            monPlayer.choosePrevious(listBox1,trackBar2,trackBar1);
+            monPlayer.choosePrevious(listBox1,trackBar2,trackBar1, musicList);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -269,7 +283,7 @@ namespace DreamMusicPlayer
                 {
                     listBox1.SelectedIndex = listBox1.SelectedIndex + 1;
                     trackBar2.Value = 0;
-                    string chooseLayer = c.CuttingPath(_fileURL);
+                    string chooseLayer = c.CuttingPath(musicList[listBox1.SelectedIndex].Path);
                     btn_stop_Click(sender, e);
                     btn_Play_Click(sender, e);
                 }
@@ -330,6 +344,11 @@ namespace DreamMusicPlayer
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
@@ -340,18 +359,36 @@ namespace DreamMusicPlayer
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                _fichiers = openFileDialog1.SafeFileNames;
-                _cheminFichier = openFileDialog1.FileNames;
+                musicList = new List<Music>();
                 listBox1.Items.Clear();
-                int compteur = 0;
-                for (int i = 0; i < _fichiers.Length; i++)
+                foreach (string nomMusic in openFileDialog1.SafeFileNames)
                 {
-                    listBox1.Items.Add(_fichiers[i]);
-                    compteur = i; 
+                    Music music = new Music();
+                    music.Title = nomMusic;
+                    listBox1.Items.Add(nomMusic);
+                    musicList.Add(music);
+
                 }
-              
-                //myplayer.settings.volume = trackBar1.Value;
+                int nbMusic = musicList.Count;
+                int i = 0;
+                foreach (string cheminMusic in openFileDialog1.FileNames)
+                {
+                    musicList[i].Path = cheminMusic;
+                    i++;
+                }
                 listBox1.SelectedIndex = 0;
+                currentIndex = 0;
+                //_fichiers = openFileDialog1.SafeFileNames;
+                //_cheminFichier = openFileDialog1.FileNames;
+                //listBox1.Items.Clear();
+                //int compteur = 0;
+                //for (int i = 0; i < _fichiers.Length; i++)
+                //{
+                //    listBox1.Items.Add(_fichiers[i]);
+                //    compteur = i; 
+                //}
+
+                //myplayer.settings.volume = trackBar1.Value;
             }
         }
 #else
