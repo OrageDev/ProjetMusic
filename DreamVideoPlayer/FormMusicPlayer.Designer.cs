@@ -2,7 +2,7 @@
 {
     partial class FormMusicPlayer
     {
-        #if DEBUG
+       
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -395,7 +395,7 @@
         private System.Windows.Forms.Timer timer1;
         //private OpenTK.GLControl glControl1;
     }
-#else
+/*#else
     /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -780,6 +780,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox richTextBox1;
     }
-#endif
+#endif*/
 }
 

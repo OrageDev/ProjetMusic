@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WMPLib;
 
@@ -62,7 +64,11 @@ namespace DreamMusicPlayer
         public void StopMusic(System.Windows.Forms.Label label1, System.Windows.Forms.Label labelEtat, System.Windows.Forms.TrackBar trackBar2)
         {
             monPlayermdr.controls.stop();
-            labelEtat.Text = "Stopped";
+            CultureInfo uiCulture1 = CultureInfo.CurrentUICulture;
+            CultureInfo uiCulture2 = Thread.CurrentThread.CurrentUICulture;
+            Console.WriteLine("The current UI culture is {0}", uiCulture1.Name);
+            Console.WriteLine("The two CultureInfo objects are equal: {0}", uiCulture1 == uiCulture2);
+            labelEtat.Text = "Arrêté";
             label1.Text = "0";
             Time defaut = new Time();
             defaut.DefineTimeDefault(label1);

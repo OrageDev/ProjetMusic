@@ -19,7 +19,7 @@ namespace DreamMusicPlayer
     public partial class FormMusicPlayer : Form
     {
 
-#if DEBUG
+
 
         //static public WMPLib.WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
         //static public SoundPlayer player = new SoundPlayer();
@@ -276,7 +276,7 @@ namespace DreamMusicPlayer
         {
 
             labelEtat.Text = monPlayer.GetStatus();
-            if (monPlayer.GetStatus().ToString() == "Stopped")
+            if (monPlayer.GetStatus().ToString().Equals("Arrêté"))
             {
                 int v = listBox1.SelectedIndex;
                 if (v + 1 < listBox1.Items.Count)
@@ -391,7 +391,7 @@ namespace DreamMusicPlayer
                 //myplayer.settings.volume = trackBar1.Value;
             }
         }
-#else
+/*#else
        static public WMPLib.WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
         static public SoundPlayer player = new SoundPlayer();
         //Thread mythread;
@@ -729,7 +729,7 @@ namespace DreamMusicPlayer
         }
 
 #endif
-
+*/
     }
 
 }

@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamVideoPlayer", "DreamVideoPlayer\DreamVideoPlayer.csproj", "{B57007FE-7E64-4A56-A3A1-7D409119A17F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6} = {7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6}
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,9 @@ Global
 		{B57007FE-7E64-4A56-A3A1-7D409119A17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B57007FE-7E64-4A56-A3A1-7D409119A17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B57007FE-7E64-4A56-A3A1-7D409119A17F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6}.Debug|Any CPU.ActiveCfg = Debug
+		{7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6}.Release|Any CPU.ActiveCfg = Release
+		{7AEFF8F7-EAD6-47D0-AF6C-7471572B75E6}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
